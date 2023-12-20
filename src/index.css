@@ -25,7 +25,7 @@ input {
 .App {
   width: 100%;
   min-height: 100vh;
-  background-color: #e8d174; /* Updated color */
+  background-color: #f8f8f8; /* Updated color */
   color: #9ed670; /* Updated color */
   padding-top: 60px;
 }
@@ -76,7 +76,7 @@ input {
 .messages-wrapper {
   padding: 30px;
   margin-bottom: 60px;
-  background-color: #e8d174; /* Updated color */
+  background-color: #f4f3f0; /* Updated color */
   color: #9ed670; /* Updated color */
 }
 .chat-bubble {
@@ -152,4 +152,10 @@ input {
   border: 1px solid #4d7358; /* Updated color */
   background-color: #d64d4d; /* Updated color */
   font-weight: 600;
+}
+
+.message-image {
+  max-width: 200px; /* or any other appropriate size */
+  height: auto;
+  border-radius: 8px; /* optional, for rounded corners */
 }
