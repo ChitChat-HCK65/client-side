@@ -3,6 +3,7 @@ import { auth, db, storage } from "../../firebase";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import EmojiPicker from "emoji-picker-react"
+import { BsEmojiLaughingFill } from "react-icons/bs";
 
 import PropTypes from "prop-types";
 
@@ -65,7 +66,7 @@ function SendMessage({ scroll }) {
         value={message}
         onChange={(e) => setMessage(e.target.value)}
       />
-      <button type="button" onClick={() => setShowEmojiPicker(!showEmojiPicker)}>Emojji</button>
+      <button type="button" onClick={() => setShowEmojiPicker(!showEmojiPicker)}><BsEmojiLaughingFill size={24}/></button>
       {showEmojiPicker && <EmojiPicker onEmojiClick={onEmojiClick} />}
       <button type="submit">Send</button>
       <input

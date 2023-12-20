@@ -3,6 +3,9 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { doc, deleteDoc, updateDoc } from "firebase/firestore";
 import { useState, useRef, useEffect } from "react";
 
+import { RiDeleteBin5Fill } from "react-icons/ri";
+import { CiEdit } from "react-icons/ci";
+
 import PropTypes from "prop-types";
 
 function Message({ message }) {
@@ -31,7 +34,7 @@ function Message({ message }) {
   };
 
   return (
-    <div className={`chat-bubble ${message.uid === user.uid ? "right" : ""}`}>
+    <div ref={ref} className={`chat-bubble ${message.uid === user.uid ? "right" : ""}`}>
       <img
         className="chat-bubble__left"
         src={message.avatar}
@@ -57,10 +60,15 @@ function Message({ message }) {
           </>
         )}
         {user.uid === message.uid && (
-          <div>
-            <button onClick={deleteMessage}>Delete</button>
-            <button onClick={() => setIsEditing(true)}>Edit</button>
-          </div>
+          <div className="button-action">
+          {/* <button onClick={deleteMessage}>Delete</button> */}
+          <button className="button-delete">
+            <RiDeleteBin5Fill color="black" onClick={deleteMessage}/>
+          </button>
+          <button className="button-edit">
+            <CiEdit color="black" onClick={() => setIsEditing(true)}/>
+          </button>
+        </div>
         )}
       </div>
     </div>

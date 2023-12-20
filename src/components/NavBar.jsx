@@ -2,6 +2,8 @@ import GoogleSignin from "../image/btn_google_signin_dark_pressed_web.png";
 import { auth } from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { GoDeviceCameraVideo } from "react-icons/go";
+import { ImBubbles } from "react-icons/im";
 
 function NavBar() {
   const [user] = useAuthState(auth);
@@ -17,7 +19,10 @@ function NavBar() {
 
   return (
     <nav className="nav-bar">
-      <h1>Chit Chat</h1>
+      <h1>ChitChat <ImBubbles /></h1>
+      <div className="button-cam">
+       <GoDeviceCameraVideo size={24}/>
+      </div>
       {user ? (
         <button onClick={signOut} className="sign-out" type="button">
           Sign Out

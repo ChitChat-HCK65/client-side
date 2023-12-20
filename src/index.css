@@ -159,3 +159,28 @@ input {
   height: auto;
   border-radius: 8px; /* optional, for rounded corners */
 }
+.button-delete {
+  border-radius: 5px 5px 5px 5px;
+  margin-right: 5px;
+  border: 1px solid #4d7358;
+  margin-top: 4px;
+}
+.button-edit {
+  border-radius: 5px 5px 5px 5px;
+  margin-right: 5px;
+  border: 1px solid #4d7358;
+  margin-top: 4px;
+}
+.button-action {
+  float: right;
+}
+.button-cam{
+  float: right;
+  margin-left: auto;
+  margin-right: 12px;
+  margin-top: 6px;
+}
+.button-opt {
+  margin-right: 12px;
+  margin-top: 6px;
+}
