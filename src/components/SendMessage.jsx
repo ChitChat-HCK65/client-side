@@ -9,8 +9,9 @@ function SendMessage({ scroll }) {
   const [message, setMessage] = useState("");
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
 
-  const onEmojiClick = (event, emojiObject) => {
-    setMessage(message + emojiObject.emoji);
+  const onEmojiClick = (event, emojiData) => {
+    console.log(event,"<<<<<<<<<<<<<<< event", emojiData, "<<<<<<<<<<<<<<< emojiobject");
+    setMessage(message + event.emoji);
   };
 
   const sendMessage = async (event) => {
