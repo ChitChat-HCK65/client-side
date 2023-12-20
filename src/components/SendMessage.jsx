@@ -1,11 +1,17 @@
 import { useState } from "react";
 import { auth, db } from "../../firebase";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import EmojiPicker from "emoji-picker-react"
 
 import PropTypes from "prop-types";
 
 function SendMessage({ scroll }) {
   const [message, setMessage] = useState("");
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+
+  const onEmojiClick = (event, emojiObject) => {
+    setMessage(message + emojiObject.emoji);
+  };
 
   const sendMessage = async (event) => {
     event.preventDefault();
@@ -34,6 +40,8 @@ function SendMessage({ scroll }) {
         value={message}
         onChange={(e) => setMessage(e.target.value)}
       />
+      <button type="button" onClick={() => setShowEmojiPicker(!showEmojiPicker)}>Emojji</button>
+      {showEmojiPicker && <EmojiPicker onEmojiClick={onEmojiClick} />}
       <button type="submit">Send</button>
     </form>
   );
