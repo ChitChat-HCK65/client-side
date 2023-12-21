@@ -18,10 +18,9 @@ function NavBar() {
   };
 
   return (
-    <nav className="nav-bar">
-      <h1>ChitChat <ImBubbles /></h1>
-      <div className="button-cam">
-       <GoDeviceCameraVideo size={24}/>
+    <nav className="nav-bar flex-wrap">
+      <div className="flex flex-auto flex-row">
+        <h1>ChitChat <ImBubbles /></h1>
       </div>
       {user ? (
         <button onClick={signOut} className="sign-out" type="button">
@@ -29,12 +28,12 @@ function NavBar() {
         </button>
       ) : (
         <button className="sign-in">
-          <img
+          {/* <img
             onClick={googleSignIn}
             src={GoogleSignin}
             alt="sign in with google"
             type="button"
-          />
+          /> */}
         </button>
       )}
     </nav>

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { auth, db, storage } from "../../firebase";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import EmojiPicker from "emoji-picker-react"
+import EmojiPicker from "emoji-picker-react";
 import { BsEmojiLaughingFill } from "react-icons/bs";
 
 import PropTypes from "prop-types";
@@ -11,7 +11,6 @@ function SendMessage({ scroll }) {
   const [message, setMessage] = useState("");
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const [image, setImage] = useState(null);
-  
 
   const onEmojiClick = (event) => {
     // console.log(event,"<<<<<<<<<<<<<<< event", emojiData, "<<<<<<<<<<<<<<< emojiobject");
@@ -32,11 +31,13 @@ function SendMessage({ scroll }) {
       const storageRef = ref(storage, `images/${image.name}`);
       const uploadTask = uploadBytesResumable(storageRef, image);
 
-      await uploadTask.then((snapshot) => {
-        return getDownloadURL(snapshot.ref);
-      }).then((downloadURL) => {
-        imageUrl = downloadURL;
-      });
+      await uploadTask
+        .then((snapshot) => {
+          return getDownloadURL(snapshot.ref);
+        })
+        .then((downloadURL) => {
+          imageUrl = downloadURL;
+        });
     }
 
     await addDoc(collection(db, "messages"), {
@@ -66,15 +67,22 @@ function SendMessage({ scroll }) {
         value={message}
         onChange={(e) => setMessage(e.target.value)}
       />
-      <button type="button" onClick={() => setShowEmojiPicker(!showEmojiPicker)}><BsEmojiLaughingFill size={24}/></button>
+      <button
+        type="button"
+        onClick={() => setShowEmojiPicker(!showEmojiPicker)}
+      >
+        <BsEmojiLaughingFill size={24} />
+      </button>
       {showEmojiPicker && <EmojiPicker onEmojiClick={onEmojiClick} />}
       <button type="submit">Send</button>
-      <input
-        id="imageInput"
-        name="imageInput"
-        type="file"
-        onChange={onImageChange}
-      />
+      <div className="">
+        <input
+          id="imageInput"
+          name="imageInput"
+          type="file"
+          onChange={onImageChange}
+          />
+      </div>
     </form>
   );
 }
